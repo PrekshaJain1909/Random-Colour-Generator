@@ -1,23 +1,22 @@
+const para = document.querySelector('p');
+const heading = document.querySelector('#colorText');
+const button = document.querySelector('#generateBtn');
+const colorBox = document.querySelector('.color-box');
 
-let para = document.querySelector('p');
-let heading = document.querySelector('h1');
-let buttons = document.querySelector('button');
-function color(){
-    let red=Math.floor(Math.random()*255);
-    let blue=Math.floor(Math.random()*255);
-    let green=Math.floor(Math.random()*255);
-    let col= `rgb(${red},${green},${blue})`;
-    return col;
-};
-buttons.addEventListener("click", function(){
-    let colours=color();
-  buttons.style.backgroundColor=colours;
-  para.style.backgroundColor=colours;
-  heading.style.backgroundColor=colours;
-  heading.innerText=colours;
+function generateColor() {
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
+  return `rgb(${red}, ${green}, ${blue})`;
+}
+
+button.addEventListener('click', () => {
+  const color = generateColor();
+  heading.style.backgroundColor = color;
+  colorBox.style.backgroundColor = color;
+  heading.innerText = `Color: ${color}`;
 });
-buttons.addEventListener("mouseleave",function(){
-    buttons.style.backgroundColor="white";
-    para.style.backgroundColor="white";
-     heading.style.backgroundColor="white";
-})
+
+button.addEventListener('mouseleave', () => {
+  button.style.backgroundColor = "#3498db";
+});
